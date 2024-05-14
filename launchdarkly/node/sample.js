@@ -31,11 +31,16 @@ const context = {
 const client = LaunchDarkly.init(SDK_KEY)
 
 client.once("ready", () => {
-  client.variation("use-logging", context, false, (err, useLogging) => {
-    if (useLogging) {
-      console.log("Logging is enabled")
-    } else {
-      console.log("Logging is disabled")
+  client.variation(
+    "is-dark-mode-enabled",
+    context,
+    false,
+    (err, useDarkMode) => {
+      if (useDarkMode) {
+        console.log("Dark mode is enabled")
+      } else {
+        console.log("Dark mode is disabled")
+      }
     }
-  })
+  )
 })

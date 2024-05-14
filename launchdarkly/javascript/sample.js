@@ -23,19 +23,8 @@
 import * as LaunchDarkly from "@launchdarkly/node-server-sdk"
 
 const SDK_KEY = "<SDK_KEY>"
-const context = {
-  kind: "user",
-  name: "Sandy",
-  key: "example-context-key",
-}
 const client = LaunchDarkly.init(SDK_KEY)
 
 client.once("ready", () => {
-  client.variation("use-logging", context, false, (err, useLogging) => {
-    if (useLogging) {
-      console.log("Logging is enabled")
-    } else {
-      console.log("Logging is disabled")
-    }
-  })
+  console.log("Logging is enabled")
 })

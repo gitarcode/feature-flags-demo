@@ -37,7 +37,7 @@ func checkFeatureFlags(user lduser.User, ldClient *ld.LDClient) {
 		// Check the 'enable-high-contrast' feature flag for the specified user
 		highContrastEnabled, err1 := ldClient.BoolVariation("enable-high-contrast", user, false)
 		if err1 != nil {
-			fmt.Printf("Error evaluating feature flag 'enable-high-contrast': %s\n", err)
+			fmt.Printf("Error evaluating feature flag 'enable-high-contrast': %s\n", err1)
 			return
 		}
 		// Report the status of the high contrast mode

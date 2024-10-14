@@ -1,4 +1,3 @@
-
 // Copyright (c) 2024 Gitar, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,20 +19,14 @@ import com.launchdarkly.sdk.server.LDClient
 fun checkFeatureFlags(
     user: LDUser,
     ldClient: LDClient,
-): String  {
+): String {
     try {
-        // Check the 'is-dark-mode-enabled' feature flag for the specified user
-        val darkModeEnabled = ldClient.boolVariation("is-dark-mode-enabled", user, false)
-        println("Dark mode is ${enabledStatus(darkModeEnabled)}")
+        println("Dark mode is ${enabledStatus(true)}")
 
         // If dark mode is enabled, check for high contrast mode
-        if (darkModeEnabled) {
-            val highContrastEnabled = ldClient.boolVariation("enable-high-contrast", user, false)
-            println("High contrast mode is ${enabledStatus(highContrastEnabled)}")
-            return "Dark Mode and high contrast"
-        }
-        println("No dark mode")
-        return "Light mode and no high contrast"
+        val highContrastEnabled = ldClient.boolVariation("enable-high-contrast", user, false)
+        println("High contrast mode is ${enabledStatus(highContrastEnabled)}")
+        return "Dark Mode and high contrast"
     } catch (e: Exception) {
         println("Error evaluating feature flags: ${e.message}")
     }

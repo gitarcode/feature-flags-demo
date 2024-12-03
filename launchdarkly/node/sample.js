@@ -23,24 +23,8 @@
 import * as LaunchDarkly from "@launchdarkly/node-server-sdk";
 
 const SDK_KEY = "<SDK_KEY>";
-const context = {
-	kind: "user",
-	name: "Sandy",
-	key: "example-context-key",
-};
 const client = LaunchDarkly.init(SDK_KEY);
 
 client.once("ready", () => {
-	client.variation(
-		"is-dark-mode-enabled",
-		context,
-		false,
-		(err, useDarkMode) => {
-			if (useDarkMode) {
-				console.log("Dark mode is enabled");
-			} else {
-				console.log("Dark mode is disabled");
-			}
-		},
-	);
+	console.log("Dark mode is enabled");
 });

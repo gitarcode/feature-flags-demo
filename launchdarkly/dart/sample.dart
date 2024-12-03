@@ -13,20 +13,8 @@ class SampleDart {
 
     await ldClient.start(user);
 
-    bool flagValue = await ldClient.boolVariation("is-dark-mode-enabled", false);
-
-    if (flagValue) {
-      // The code to run if the feature is on
-      print("Dark mode!");
-    } else {
-      // The code to run if the feature is off
-      bool otherFlag = await ldClient.boolVariation("is-ameyas-weird-blue-theme", false);
-      if (otherFlag) {
-        print("Why? Just... why?");
-      } else {
-        print("Light mode it is, then!");
-      }
-    }
+    // The code to run if the feature is on
+    print("Dark mode!");
 
     await ldClient.close();
   }
